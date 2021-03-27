@@ -8,7 +8,7 @@ from .models import Message
 
 class TalkMain(LoginRequiredMixin, View):
     def get(self, request):
-        return render(request, 'chat/talk.html')
+        return render(request, 'chat/index.html')
 
     def post(self, request):
         message = Message(text=request.POST['message'], owner=request.user)
