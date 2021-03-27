@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="dj4e" content="cb5e167492be00a8d04fff1532fd0ec4">
+    <title>Title</title>
+</head>
+<body>
+{% extends "base_menu.html" %}
+{% block content %}
+<h1>Delete Ad</h1>
+
+<p>Are you sure you want to delete the ad: {{ ad }}?</p>
+
+<form action="" method="POST">
+  {% csrf_token %}
+  <input type="submit" value="Yes, delete.">
+</form>
+{% endblock %}
+</body>
+</html>
