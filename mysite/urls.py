@@ -6,12 +6,12 @@ from django.conf.urls import url
 from django.views.static import serve
 from django.contrib.auth import views as auth_views
 
-# Up two folders to serve "site" content
+
 urlpatterns = [
-    path('', include('ads.urls')),  # Change to ads.urls
-    path('admin/', admin.site.urls),  # Keep
-    path('accounts/', include('django.contrib.auth.urls')),  # Keep
-    url(r'^oauth/', include('social_django.urls', namespace='social')),  # Keep
+    path('', include('ads.urls')),  
+    path('admin/', admin.site.urls),  
+    path('accounts/', include('django.contrib.auth.urls')),  
+    url(r'^oauth/', include('social_django.urls', namespace='social')),  
 
     # Sample applications
     path('cats/', include('cats.urls')),
@@ -21,17 +21,7 @@ urlpatterns = [
 
 ]
 
-# Serve the static HTML
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-urlpatterns += [
-    url(r'^site/(?P<path>.*)$', serve,
-        {'document_root': os.path.join(BASE_DIR, 'site'),
-         'show_indexes': True},
-        name='site_path'
-        ),
-]
-
-# Serve the favicon - Keep for later
+# Serve the favicon
 urlpatterns += [
     path('favicon.ico', serve, {
         'path': 'favicon.ico',
@@ -40,7 +30,7 @@ urlpatterns += [
          ),
 ]
 
-# Switch to social login if it is configured - Keep for later
+# Switch to social login if it is configured
 try:
     from . import github_settings
 
